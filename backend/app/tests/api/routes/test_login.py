@@ -5,8 +5,8 @@ from sqlmodel import Session, select
 
 from app.core.config import settings
 from app.core.security import verify_password
-from app.models.users import User
-from app.utils.password import generate_password_reset_token
+from app.core.models.users import User
+from app.core.utils.password import generate_password_reset_token
 
 
 def test_get_access_token(client: TestClient) -> None:

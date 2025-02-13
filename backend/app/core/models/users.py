@@ -1,11 +1,11 @@
 import uuid
 
-from app.dtos.users import UserBase
+from app.core.dtos.users import UserBase
 from pydantic import EmailStr
 from sqlmodel import Field, Relationship
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from app.models.items import Item
+    from app.core.models.items import Item
 
 # Database model, database table inferred from class name
 class User(UserBase, table=True):

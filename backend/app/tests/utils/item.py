@@ -1,8 +1,8 @@
-from app.repositories.items import ItemsRepository
+from app.core.repositories.items import ItemsRepository
 from sqlmodel import Session
 
-from app.models.items import Item
-from app.dtos.items import ItemCreate
+from app.core.models.items import Item
+from app.core.dtos.items import ItemCreate
 from app.tests.utils.user import create_random_user
 from app.tests.utils.utils import random_lower_string
 

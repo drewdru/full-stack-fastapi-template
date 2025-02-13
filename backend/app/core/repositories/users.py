@@ -3,8 +3,8 @@ from typing import Any
 from sqlmodel import Session, select
 
 from app.core.security import get_password_hash, verify_password
-from app.models.users import User
-from app.dtos.users import UserCreate, UserUpdate
+from app.core.models.users import User
+from app.core.dtos.users import UserCreate, UserUpdate
 
 class UserRepository:
     """Encapsulates all user-related database operations."""

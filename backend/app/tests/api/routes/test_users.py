@@ -1,14 +1,14 @@
 import uuid
 from unittest.mock import patch
 
-from app.repositories.users import UserRepository
+from app.core.repositories.users import UserRepository
 from fastapi.testclient import TestClient
 from sqlmodel import Session, select
 
 from app.core.config import settings
 from app.core.security import verify_password
-from app.models.users import User
-from app.dtos.users import UserCreate
+from app.core.models.users import User
+from app.core.dtos.users import UserCreate
 from app.tests.utils.utils import random_email, random_lower_string
 
 
@@ -38,7 +38,7 @@ def test_create_user_new_email(
     client: TestClient, superuser_token_headers: dict[str, str], db: Session
 ) -> None:
     with (
-        patch("app.utils.email.send_email", return_value=None),
+        patch("app.core.utils.email.send_email", return_value=None),
         patch("app.core.config.settings.SMTP_HOST", "smtp.example.com"),
         patch("app.core.config.settings.SMTP_USER", "admin@example.com"),
     ):

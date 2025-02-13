@@ -1,10 +1,10 @@
 import uuid
 
-from app.dtos.items import ItemBase
+from app.core.dtos.items import ItemBase
 from sqlmodel import Field, Relationship
 from typing import TYPE_CHECKING, Optional
 if TYPE_CHECKING:
-    from app.models.users import User
+    from app.core.models.users import User
 
 class Item(ItemBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)

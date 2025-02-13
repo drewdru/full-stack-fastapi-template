@@ -1,10 +1,10 @@
-from app.repositories.users import UserRepository
+from app.core.repositories.users import UserRepository
 from fastapi.encoders import jsonable_encoder
 from sqlmodel import Session
 
 from app.core.security import verify_password
-from app.models.users import User
-from app.dtos.users import UserCreate, UserUpdate
+from app.core.models.users import User
+from app.core.dtos.users import UserCreate, UserUpdate
 from app.tests.utils.utils import random_email, random_lower_string
 
 
