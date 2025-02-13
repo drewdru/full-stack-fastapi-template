@@ -1,7 +1,6 @@
 from app.repositories.items import ItemsRepository
 from sqlmodel import Session
 
-from app import crud
 from app.models.items import Item
 from app.dtos.items import ItemCreate
 from app.tests.utils.user import create_random_user

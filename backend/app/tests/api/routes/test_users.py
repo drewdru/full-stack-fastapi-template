@@ -5,7 +5,6 @@ from app.repositories.users import UserRepository
 from fastapi.testclient import TestClient
 from sqlmodel import Session, select
 
-from app import crud
 from app.core.config import settings
 from app.core.security import verify_password
 from app.models.users import User

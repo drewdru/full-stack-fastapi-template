@@ -2,7 +2,6 @@ from app.repositories.users import UserRepository
 from fastapi.testclient import TestClient
 from sqlmodel import Session
 
-from app import crud
 from app.core.config import settings
 from app.models.users import User
 from app.dtos.users import UserCreate, UserUpdate

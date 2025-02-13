@@ -2,7 +2,6 @@ from app.repositories.users import UserRepository
 from fastapi.encoders import jsonable_encoder
 from sqlmodel import Session
 
-from app import crud
 from app.core.security import verify_password
 from app.models.users import User
 from app.dtos.users import UserCreate, UserUpdate

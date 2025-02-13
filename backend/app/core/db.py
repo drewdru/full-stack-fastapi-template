@@ -1,7 +1,6 @@
 from app.repositories.users import UserRepository
 from sqlmodel import Session, create_engine, select
 
-from app import crud
 from app.core.config import settings
 from app.models.users import User
 from app.dtos.users import UserCreate
