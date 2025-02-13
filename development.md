@@ -1,5 +1,11 @@
 # FastAPI Project - Development
 
+## Create local .env
+```bash
+cp .env.example .env
+cp frontend/.env.exampe frontend/.env
+```
+
 ## Docker Compose
 
 * Start the local stack with Docker Compose:
