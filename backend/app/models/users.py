@@ -14,6 +14,7 @@ class User(UserBase, table=True):
     email: EmailStr = Field(unique=True, index=True, max_length=255)
     is_active: bool = True
     is_superuser: bool = False
+    is_staff: bool = False
     full_name: str | None = Field(default=None, max_length=255)
     
     items: list["Item"] = Relationship(back_populates="owner", cascade_delete=True)
