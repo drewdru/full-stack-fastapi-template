@@ -451,11 +451,11 @@ export const UserUpdateMeSchema = {
   title: "UserUpdateMe",
 } as const
 
-export const UsersPublicSchema = {
+export const UsersPublicPaginatedSchema = {
   properties: {
     data: {
       items: {
-        $ref: "#/components/schemas/UserPublic",
+        $ref: "#/components/schemas/UsersPublicPaginated",
       },
       type: "array",
       title: "Data",
@@ -467,7 +467,7 @@ export const UsersPublicSchema = {
   },
   type: "object",
   required: ["data", "count"],
-  title: "UsersPublic",
+  title: "UsersPublicPaginated",
 } as const
 
 export const ValidationErrorSchema = {

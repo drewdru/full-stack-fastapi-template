@@ -5,10 +5,10 @@ from app.core.repositories.users import UserRepository
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 
-from app.api.deps import SessionDep
 from app.core import security
 from app.core.config import settings
 from app.core.dtos.token import Token
+from sqlmodel import Session
 
 router = APIRouter(tags=["login"])
 
@@ -18,7 +18,7 @@ class LoginService:
 
     @staticmethod
     def login_access_token(
-        session: SessionDep, form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
+        session: Session, form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
     ) -> Token:
         """
         OAuth2 compatible token login, get an access token for future requests

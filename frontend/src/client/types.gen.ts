@@ -76,7 +76,7 @@ export type UserRegister = {
   full_name?: string | null
 }
 
-export type UsersPublic = {
+export type UsersPublicPaginated = {
   data: Array<UserPublic>
   count: number
 }
@@ -163,7 +163,7 @@ export type UsersReadUsersData = {
   skip?: number
 }
 
-export type UsersReadUsersResponse = UsersPublic
+export type UsersReadUsersResponse = UsersPublicPaginated
 
 export type UsersCreateUserData = {
   requestBody: UserCreate

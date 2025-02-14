@@ -1,7 +1,5 @@
 import uuid
-from app.api.deps import CurrentUser, SessionDep
 from sqlmodel import Session
-from fastapi import HTTPException
 
 from app.core.models.items import Item
 from app.core.dtos.items import ItemCreate 
@@ -19,14 +17,8 @@ class ItemsRepository:
         return db_item
     
     @staticmethod
-    def get_user_item_by_id(
-        session: SessionDep,
-        current_user: CurrentUser,
+    def get_item_by_id(
+        session: Session,
         id: uuid.UUID,
     ) -> Item:
-        item = session.get(Item, id)
-        if not item:
-            raise HTTPException(status_code=404, detail="Item not found")
-        if not current_user.is_superuser and (item.owner_id != current_user.id):
-            raise HTTPException(status_code=400, detail="Not enough permissions")
-        return item
+        return session.get(Item, id)

@@ -4,7 +4,6 @@ from typing import Any
 from fastapi import APIRouter
 
 from app.api.deps import CurrentUser, SessionDep
-from app.core.models.items import Item
 from app.core.dtos.items import ItemCreate, ItemPublic, ItemsPublic, ItemUpdate
 from app.core.dtos.message import Message
 

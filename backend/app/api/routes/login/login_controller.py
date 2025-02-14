@@ -1,13 +1,10 @@
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Depends
-from fastapi.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm
 
-from app.api.deps import CurrentUser, SessionDep, get_current_active_superuser
+from app.api.deps import CurrentUser, SessionDep
 
-from app.core.dtos.message import Message
-from app.core.dtos.password import NewPassword
 from app.core.dtos.token import Token
 from app.core.dtos.users import UserPublic
 

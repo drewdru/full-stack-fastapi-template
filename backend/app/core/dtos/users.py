@@ -2,18 +2,27 @@ import uuid
 
 from pydantic import EmailStr
 from sqlmodel import Field, SQLModel
+from pydantic import BaseModel
 
 # Shared properties
 class UserBase(SQLModel):
     email: EmailStr = Field(unique=True, index=True, max_length=255)
     is_active: bool = True
     is_superuser: bool = False
+    is_staff: bool = False
     full_name: str | None = Field(default=None, max_length=255)
 
 
 # Properties to receive via API on creation
 class UserCreate(UserBase):
     password: str = Field(min_length=8, max_length=40)
+
+
+class PrivateUserCreate(BaseModel):
+    email: str
+    password: str
+    full_name: str
+    is_verified: bool = False
 
 
 class UserRegister(SQLModel):
@@ -43,6 +52,6 @@ class UserPublic(UserBase):
     id: uuid.UUID
 
 
-class UsersPublic(SQLModel):
+class UsersPublicPaginated(SQLModel):
     data: list[UserPublic]
     count: int

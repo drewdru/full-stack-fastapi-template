@@ -4,7 +4,6 @@ from app.core.repositories.users import UserRepository
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import HTMLResponse
 
-from app.api.deps import SessionDep
 from app.core.security import get_password_hash
 from app.core.dtos.message import Message
 from app.core.dtos.password import NewPassword
@@ -17,6 +16,7 @@ from app.core.utils.password import (
     verify_password_reset_token,
     generate_password_reset_token,
 )
+from sqlmodel import Session
 
 router = APIRouter(tags=["login"])
 
@@ -25,7 +25,7 @@ class PasswordRecoveryService:
     """Handles password-related business logic and database operations"""
 
     @staticmethod
-    def recover_password(email: str, session: SessionDep) -> Message:
+    def recover_password(email: str, session: Session) -> Message:
         """
         Password Recovery
         """
@@ -48,7 +48,7 @@ class PasswordRecoveryService:
         return Message(message="Password recovery email sent")
 
     @staticmethod
-    def reset_password(session: SessionDep, body: NewPassword) -> Message:
+    def reset_password(session: Session, body: NewPassword) -> Message:
         """
         Reset password
         """
@@ -70,7 +70,7 @@ class PasswordRecoveryService:
         return Message(message="Password updated successfully")
 
     @staticmethod
-    def recover_password_html_content(email: str, session: SessionDep) -> Any:
+    def recover_password_html_content(email: str, session: Session) -> Any:
         """
         HTML Content for Password Recovery
         """
